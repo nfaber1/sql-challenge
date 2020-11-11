@@ -1,2 +1,88 @@
+Initial Steps:
+
+I. Create Tables:
+  a. departments:		create table deptartments(
+					dept_no VARCHAR Primary Key,
+    					dept_name VARCHAR
+				);
+
+  b. employee departments:	create table dept_emp(
+					emp_no VARCHAR Primary key,
+    					dept_no INT
+				);
+
+  c. department manager:	create table dept_manager(
+					dept_no VARCHAR Primary key,
+    					emp_no VARCHAR
+				);
+
+  d. employees:			create table employees(
+					emp_no INT Primary key,
+					emp_title VARCHAR,
+					birth_date DATE,
+					first_name VARCHAR,
+					last_name VARCHAR,
+					sex VARCHAR,
+					hire_date DATE
+				);
+
+  e. salaries:			create table salaries(
+					emp_no INT Primary key,
+					salaries INT 
+				);
+
+  f. titles:			create table titles(
+					title_id VARCHAR Primary key,
+					title VARCHAR
+				);
+
+II. Import CSV files for each table
+
+---------------------------------------
+
+Part 1. 
+
 SELECT employees.emp_no, employees.last_name, employees.first_name, employees.sex, salaries.salaries
 From employees LEFT JOIN salaries ON employees.emp_no=salaries.emp_no;
+
+Part 2. 
+
+SELECT employees.first_name, employees.last_name, employees.hire_date
+FROM employees
+WHERE hire_date >= '1986-01-01'
+and hire_date < '1987-01-01'
+
+Part 3. 
+
+SELECT employees.last_name, employees.first_name, dept_manager.dept_no, dept_manager.emp_no, deptartments.dept_name
+FROM dept_manager
+LEFT JOIN employees
+ON employees.emp_no = dept_manager.emp_no
+LEFT JOIN deptartments
+ON dept_manager.dept_no = deptartments.dept_no;
+
+Part 4. 
+
+
+
+Part 5. 
+
+SELECT employees.first_name, employees.last_name, employees.sex
+FROM employees
+WHERE first_name = 'Hercules'
+AND last_name LIKE 'B%'
+
+Part 6. 
+
+
+
+Part 7.
+
+
+
+Part 8.
+
+SELECT last_name, count(last_name) AS "Count_Last_Name"
+FROM employees
+GROUP BY last_name
+ORDER BY "Count_Last_Name" DESC;
