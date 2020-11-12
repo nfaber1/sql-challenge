@@ -78,7 +78,12 @@ AND last_name LIKE 'B%'
 
 Part 6. 
 
-
+SELECT employees.emp_no, employees.first_name, employees.last_name, deptartments.dept_name FROM employees
+JOIN dept_emp
+ON employees.emp_no = dept_emp.emp_no
+JOIN deptartments
+ON dept_emp.dept_no = deptartments.dept_no
+WHERE dept_name = 'Sales'
 
 Part 7.
 
