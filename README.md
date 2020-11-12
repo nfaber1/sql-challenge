@@ -1,1 +1,1 @@
-# Please see "Code" for code from SQL Challenge.
+# Please see "Code_SQL-Challenge" for code from SQL Challenge.
